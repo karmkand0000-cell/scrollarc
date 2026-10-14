@@ -1,6 +1,6 @@
 # ScrollArc Digital — Website
 
-Live at **https://www.scrollarcdigital.in** (GitHub Pages, custom domain from Hostinger).
+Live at **https://karmkand0000-cell.github.io/scrollarc** (GitHub Pages, custom domain from Hostinger).
 
 Static, bilingual (English / हिंदी) agency website. No build step — GitHub Pages serves these files directly.
 
@@ -42,7 +42,7 @@ function doPost(e) {
 ## After the domain resolves
 
 - Settings → Pages → tick **Enforce HTTPS**.
-- Google Search Console → add `https://www.scrollarcdigital.in` → verify → submit `sitemap.xml`.
+- Google Search Console → add `https://karmkand0000-cell.github.io/scrollarc` → verify → submit `sitemap.xml`.
 - Put the link in Instagram bio, WhatsApp Business profile and Google Business Profile.
 
 ## Still to confirm
