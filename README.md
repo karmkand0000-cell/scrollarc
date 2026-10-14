@@ -47,5 +47,5 @@ function doPost(e) {
 
 ## Still to confirm
 
-- Instagram handle (currently `@scrollarc`) · City in footer/Contact.
+- City in footer/Contact. Add social media links once the handles are created.
 - Working hours: Mon–Sat, 10 AM – 7 PM.
