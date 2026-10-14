@@ -1,7 +1,31 @@
 /* ScrollArc Digital — site script */
+/* ===== SETTINGS (edit these two lines, nothing else) =====
+   GA4:   paste your Google Analytics 4 Measurement ID, e.g. 'G-ABC123XYZ'
+   SHEET: paste your Google Apps Script web-app URL to save every contact-form lead to a Google Sheet
+   Leave '' to switch a feature off. */
+var SA_CONFIG = { ga4: '', sheet: '' };
+
 (function(){
   var SITE = window.SA_SITE || {};
   var html = document.documentElement;
+
+  // Google Analytics 4 (loads only when an ID is set)
+  if (SA_CONFIG.ga4) {
+    var g = document.createElement('script'); g.async = true;
+    g.src = 'https://www.googletagmanager.com/gtag/js?id=' + SA_CONFIG.ga4; document.head.appendChild(g);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date()); gtag('config', SA_CONFIG.ga4);
+  }
+  function track(name, params){ if (window.gtag) gtag('event', name, params || {}); }
+  // count every WhatsApp / call / email click as a conversion
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href]'); if(!a) return;
+    var h = a.getAttribute('href');
+    if (/wa\.me|whatsapp/.test(h)) track('whatsapp_click', {page: location.pathname});
+    else if (h.indexOf('tel:') === 0) track('call_click', {page: location.pathname});
+    else if (h.indexOf('mailto:') === 0) track('email_click', {page: location.pathname});
+  });
   // language toggle
   function setLang(l){
     html.setAttribute('data-lang', l); html.setAttribute('lang', l === 'hi' ? 'hi' : 'en');
@@ -52,6 +76,13 @@
       [['name','Name'],['business','Business'],['city','City'],['type','Business type'],['service','Interested in'],['link','Page / website'],['msg','Message']].forEach(function(p){
         var v = (d.get(p[0]) || '').toString().trim(); if(v) lines.push(p[1] + ': ' + v);
       });
+      // save the lead to Google Sheet first (so it is never lost even if WhatsApp isn't sent)
+      if (SA_CONFIG.sheet) {
+        var payload = {page: location.pathname, time: new Date().toISOString()};
+        d.forEach(function(v, k){ payload[k] = v.toString(); });
+        try { fetch(SA_CONFIG.sheet, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(payload)}); } catch(err){}
+      }
+      track('generate_lead', {form: 'contact'});
       var url = 'https://wa.me/' + SITE.wa + '?text=' + encodeURIComponent(lines.join('\n'));
       var out = document.getElementById('formOut');
       out.hidden = false;
