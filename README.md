@@ -49,3 +49,7 @@ function doPost(e) {
 
 - City in footer/Contact. Add social media links once the handles are created.
 - Working hours: Mon–Sat, 10 AM – 7 PM.
+
+## Education For Everyone portal
+
+Free learning portal (Class 6 to PhD, 21 subjects, 762 lessons, 32 exam guides) at **https://karmkand0000-cell.github.io/scrollarc/education/** — one file, `education/index.html`. Designed and developed by Neeraj Kumar. Content is edited in the Claude version of the portal (Admin panel); this copy is read-only, so re-upload the file after big updates.
