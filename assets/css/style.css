@@ -464,3 +464,42 @@ a.ci:hover,.ci:hover{border-color:rgba(242,162,12,.5)}
 .card.cta-card .from{border-color:rgba(6,11,20,.2);color:var(--ink);font-weight:700}
 .card.cta-card .go{background:var(--ink);color:var(--amber)}
 .card.cta-card::before{display:none}
+
+/* ---- Case studies (work.html) v3 ---- */
+.cases{padding-top:clamp(48px,7vw,88px)}
+.case{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--line)}
+.case:first-child{border-top:0;padding-top:0}
+.case-top{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(28px,4.5vw,64px);align-items:center}
+.case:nth-child(even) .case-vis{order:2}
+.case-vis{margin:0;border-radius:28px;overflow:hidden;background:var(--navy);box-shadow:0 2px 4px rgba(11,21,38,.06),0 40px 80px -36px rgba(11,21,38,.55)}
+.case-vis img{width:100%;height:auto;transition:transform 1.2s var(--ease)}
+.case:hover .case-vis img{transform:scale(1.025)}
+.case h2{font-size:clamp(34px,4.4vw,56px);margin-top:12px;letter-spacing:-.03em}
+.case .sum{color:var(--muted);margin-top:14px;font-size:17.5px;line-height:1.6}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 14px 13px}
+.stat b{display:block;font-family:var(--display);font-weight:700;font-size:28px;line-height:1.05;letter-spacing:-.02em;color:var(--text)}
+.stat>span{display:block;font-size:12.5px;line-height:1.4;color:var(--muted);margin-top:6px}
+html[data-lang="hi"] .stat b{font-family:'Mukta',sans-serif}
+.cs-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.cs-links:empty{display:none}
+.cs-links a{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:14px;font-weight:700;text-decoration:none;transition:border-color .2s,background .2s}
+.cs-links a:hover{border-color:var(--amber);background:var(--amberSoft)}
+.case-body{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:16px;margin-top:clamp(28px,4vw,44px)}
+.csb{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px}
+.csb h3{font-family:var(--font);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#A86A00;margin-bottom:12px;line-height:1.3}
+html[data-lang="hi"] .csb h3{font-family:'Mukta',sans-serif;font-size:15px;letter-spacing:0;text-transform:none}
+.csb h3.sub{margin-top:20px}
+.csb p{font-size:15.5px;line-height:1.6}
+.csb ul{list-style:none;padding:0;margin:0}
+.csb li{position:relative;padding:5px 0 5px 20px;font-size:15px;line-height:1.5}
+.csb li::before{content:"";position:absolute;left:0;top:.95em;width:10px;height:2px;border-radius:2px;background:var(--amber)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--amberSoft);color:#6B4500}
+.tags.t2 span{background:var(--soft);color:var(--text)}
+@media (max-width:980px){.case-top{grid-template-columns:1fr}.case:nth-child(even) .case-vis{order:0}.case-body{grid-template-columns:1fr}}
+@media (max-width:520px){.stats{gap:6px}.stat{padding:11px 10px}.stat b{font-size:22px}.stat>span{font-size:11.5px}.case-vis{border-radius:20px}.csb{padding:20px}}
+/* home "Selected work" cards: full-bleed showcase images */
+.show .sv:has(.sv-full){padding:0;place-items:stretch;background:none}
+.show .sv .sv-full{width:100%;max-height:none;border-radius:0;box-shadow:none}
+.show a:hover .sv .sv-full{transform:scale(1.04)}
