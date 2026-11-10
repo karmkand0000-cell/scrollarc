@@ -11,7 +11,7 @@ DirectoryIndex index.html index.php
 </IfModule>
 
 # nobody may read the settings or helper files directly
-<FilesMatch "^(config|lib)\.php$">
+<FilesMatch "(^(config|lib)\.php|\.md)$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
