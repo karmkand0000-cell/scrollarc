@@ -10,7 +10,9 @@ var SA_CONFIG = { ga4: '', sheet: '' };
   var html = document.documentElement;
 
   // Google Analytics 4 (loads only when an ID is set)
-  if (SA_CONFIG.ga4) {
+  var saConsent = false; try { saConsent = localStorage.getItem('sa_consent') === 'yes'; } catch(e){}
+  // Analytics loads only after the visitor says yes on the cookie banner (see extras.js)
+  if (SA_CONFIG.ga4 && saConsent) {
     var g = document.createElement('script'); g.async = true;
     g.src = 'https://www.googletagmanager.com/gtag/js?id=' + SA_CONFIG.ga4; document.head.appendChild(g);
     window.dataLayer = window.dataLayer || [];
@@ -71,13 +73,15 @@ var SA_CONFIG = { ga4: '', sheet: '' };
   if(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      if (!form.reportValidity()) return;
       var d = new FormData(form), lines = [];
       lines.push('Hi ScrollArc Digital, I want a free audit.');
-      [['name','Name'],['business','Business'],['city','City'],['type','Business type'],['service','Interested in'],['link','Page / website'],['msg','Message']].forEach(function(p){
+      [['name','Name'],['phone','Phone'],['email','Email'],['business','Business'],['city','City'],['type','Business type'],['service','Interested in'],['link','Page / website'],['msg','Message']].forEach(function(p){
         var v = (d.get(p[0]) || '').toString().trim(); if(v) lines.push(p[1] + ': ' + v);
       });
       // save the lead to Google Sheet first (so it is never lost even if WhatsApp isn't sent)
-      if (SA_CONFIG.sheet) {
+      if (window.SA_saveLead) { var pl = {source: 'contact'}; d.forEach(function(v, k){ pl[k] = v.toString(); }); SA_saveLead(pl); }
+      else if (SA_CONFIG.sheet) {
         var payload = {page: location.pathname, time: new Date().toISOString()};
         d.forEach(function(v, k){ payload[k] = v.toString(); });
         try { fetch(SA_CONFIG.sheet, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(payload)}); } catch(err){}

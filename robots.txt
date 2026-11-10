@@ -1,3 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /data/
 Sitemap: https://scrollarcdigital.in/sitemap.xml
