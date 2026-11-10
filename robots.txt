@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://karmkand0000-cell.github.io/scrollarc/sitemap.xml
+Sitemap: https://scrollarcdigital.in/sitemap.xml

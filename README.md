@@ -1,6 +1,6 @@
 # ScrollArc Digital — Website
 
-Live at **https://karmkand0000-cell.github.io/scrollarc** (GitHub Pages, custom domain from Hostinger).
+Live at **https://scrollarcdigital.in** (GitHub Pages, custom domain from Hostinger).
 
 Static, bilingual (English / हिंदी) agency website. No build step — GitHub Pages serves these files directly.
 
@@ -42,7 +42,7 @@ function doPost(e) {
 ## After the domain resolves
 
 - Settings → Pages → tick **Enforce HTTPS**.
-- Google Search Console → add `https://karmkand0000-cell.github.io/scrollarc` → verify → submit `sitemap.xml`.
+- Google Search Console → add `https://scrollarcdigital.in` → verify → submit `sitemap.xml`.
 - Put the link in Instagram bio, WhatsApp Business profile and Google Business Profile.
 
 ## Still to confirm
@@ -52,4 +52,4 @@ function doPost(e) {
 
 ## Education For Everyone portal
 
-Free learning portal (Class 6 to PhD, 21 subjects, 762 lessons, 32 exam guides) at **https://karmkand0000-cell.github.io/scrollarc/education/** — one file, `education/index.html`. Designed and developed by Neeraj Kumar. Content is edited in the Claude version of the portal (Admin panel); this copy is read-only, so re-upload the file after big updates.
+Free learning portal (Class 6 to PhD, 21 subjects, 762 lessons, 32 exam guides) at **https://scrollarcdigital.in/education/** — one file, `education/index.html`. Designed and developed by Neeraj Kumar. Content is edited in the Claude version of the portal (Admin panel); this copy is read-only, so re-upload the file after big updates.
